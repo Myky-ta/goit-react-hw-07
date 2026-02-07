@@ -1,14 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://697fbc466570ee87d50d70ce.mockapi.io/contacts";
+// базовий URL твого MockAPI проєкту
+axios.defaults.baseURL = "https://6987c500780e8375a686f6a6.mockapi.io/";
 
-// отримати всі контакти
+
 export const fetchContacts = createAsyncThunk(
   "contacts/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/contacts");
+      const response = await axios.get("/contacts"); 
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -29,7 +30,7 @@ export const addContact = createAsyncThunk(
   }
 );
 
-// видалити контакт за ID
+// видалити контакт
 export const deleteContact = createAsyncThunk(
   "contacts/deleteContact",
   async (id, thunkAPI) => {
